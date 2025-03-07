@@ -1,22 +1,3 @@
-#### **ItemModel**
-- 용품 데이터를 정의하는 모델입니다.
-- 용품의 속성(이름, 카테고리, 수량 등)을 인터페이스로 정의합니다.
-
-#### **UserModel**
-- 사용자 정보를 정의하는 모델입니다.
-- 사용자의 ID, 권한 등을 저장합니다.
-
-### 5. 핵심 설계 원칙
-
-#### **컴포넌트 재사용**
-- 가능한 한 컴포넌트를 재사용할 수 있도록 설계합니다. 예를 들어, `ItemForm` 컴포넌트는 등록과 수정 기능 모두에 사용될 수 있습니다.
-
-#### **단일 책임 원칙 (SRP)**
-- 각 컴포넌트는 하나의 책임만
-/src/app |-- /components | |-- /header | |-- /footer | |-- /item-list | |-- /item-detail | |-- /item-form | |-- /login | |-- /dashboard | |-- /notifications | |-- /services | |-- item.service.ts | |-- auth.service.ts | |-- notification.service.ts | |-- /models | |-- item.model.ts | |-- user.model.ts | |-- /pages | |-- /login-page | |-- /item-list-page | |-- /item-detail-page | |-- /dashboard-page | |-- /app-routing.module.ts |-- /app.component.ts |-- /app.module.ts
-
-
-### 2. 주요 컴포넌트 설계
 
 #### **Header 컴포넌트**
 - 애플리케이션의 상단에 위치하며, 네비게이션 메뉴와 로그인 상태 표시 등을 담당합니다.
