@@ -1,1 +1,23 @@
-<p>item-list works!</p>
+<div class="item-container">
+    <h1>Item List</h1>
+
+    <ul>
+        <li *ngFor="let item of items$ | async">
+        <span>{{ item.name }}</span>
+        <button (click)="editItem(item.id)">Edit</button>
+        <button (click)="deleteItem(item.id)">Delete</button>
+        </li>
+    </ul>
+
+    <h2>Add Item</h2>
+    <form (ngSubmit)="addItem()">
+        <input
+        type="text"
+        [(ngModel)]="newItemName"
+        name="itemName"
+        required
+        placeholder="Item Name"
+        />
+        <button type="submit">Add</button>
+    </form>
+</div>

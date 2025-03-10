@@ -11,6 +11,7 @@ import { ItemFormComponent } from './componet/item-form/item-form.component';
 import { LoginComponent } from './componet/login/login.component';
 import { DashboardComponent } from './componet/dashboard/dashboard.component';
 import { NotificationsComponent } from './componet/notifications/notifications.component';
+import { ItemServiceService } from './service/itemService.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { NotificationsComponent } from './componet/notifications/notifications.c
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ItemServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
