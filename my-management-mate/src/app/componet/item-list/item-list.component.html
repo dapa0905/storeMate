@@ -1,23 +1,20 @@
-<div class="item-container">
-    <h1>Item List</h1>
+<div class="container mt-5">
+    <div class="item-list-hearder">
+        <h1 >Item List</h1>
+        <span>
+            <button class="btn btn-primary" routerLink="">Add</button>
+        </span>
+    </div>
+    
 
-    <ul>
-        <li *ngFor="let item of items$ | async">
-        <span>{{ item.name }}</span>
-        <button (click)="editItem(item.id)">Edit</button>
-        <button (click)="deleteItem(item.id)">Delete</button>
+    <ul class="list-group">
+        <li *ngFor="let item of itemService.items$ | async" class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ item.itemName }}</span>
+            <div>
+                <button class="btn btn-success btn-sm me-2">Renter</button>
+                <button (click)="itemService.updateItem(item)" class="btn btn-warning btn-sm me-2">Edit</button>
+                <button (click)="itemService.deleteItem(item.itemId)" class="btn btn-danger btn-sm">Delete</button>
+            </div>
         </li>
     </ul>
-
-    <h2>Add Item</h2>
-    <form (ngSubmit)="addItem()">
-        <input
-        type="text"
-        [(ngModel)]="newItemName"
-        name="itemName"
-        required
-        placeholder="Item Name"
-        />
-        <button type="submit">Add</button>
-    </form>
 </div>

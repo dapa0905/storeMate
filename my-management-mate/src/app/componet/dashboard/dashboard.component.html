@@ -1,1 +1,43 @@
-<p>dashboard works!</p>
+<!-- dashboard.component.html -->
+<div class="container mt-4">
+    <h1 class="mb-4">📦DashBoard</h1>
+
+    <div class="row">
+        <!-- 용품 상태 카드 -->
+        <div class="col-md-4">
+        <div class="card bg-light mb-3">
+            <div class="card-header text-dark">Items status</div>
+            <div class="card-body">
+            <!-- <h5 class="card-title text-dark">총 용품 수: {{ totalItems }}</h5>
+            <p class="card-text text-dark">재고 부족: {{ lowStockCount }}</p> -->
+            </div>
+        </div>
+        </div>
+
+        <!-- 재고 부족 알림 카드 -->
+        <div class="col-md-4">
+        <div class="card bg-light mb-3">
+            <div class="card-header text-dark">Out of Stock Notification</div>
+            <div class="card-body">
+            <h5 class="card-title text-dark">Notification</h5>
+            <p class="card-text text-dark">hello</p>
+            </div>
+        </div>
+        </div>
+
+        <!-- 최근 업데이트된 용품 목록 카드 -->
+        <div class="col-md-4">
+        <div class="card bg-light mb-3">
+            <div class="card-header text-dark">Recently Updated Supplies</div>
+            <div class="card-body">
+            <h5 class="card-title text-dark">item-list</h5>
+            <ul class="list-group">
+                <!-- <li class="list-group-item" *ngFor="let item of recentUpdates">
+                {{ item.name }} - 업데이트: {{ item.updatedDate | date:'yyyy-MM-dd' }}
+                </li> -->
+            </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

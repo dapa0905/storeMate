@@ -4,7 +4,7 @@ import { ItemCategory } from '../enum/category.enum';
 export const ITEMS: Item[] = [
     {
     itemId: 1,
-    itemName: '용품1',
+    itemName: 'printer',
     category: ItemCategory.OfficeSupplies,
     quantity: 10,
     price: 100,
@@ -15,7 +15,7 @@ export const ITEMS: Item[] = [
 
     {
     itemId: 2,
-    itemName: '용품2',
+    itemName: 'notebook',
     category: ItemCategory.OfficeEquipment,
     quantity: 50,
     price: 30,
