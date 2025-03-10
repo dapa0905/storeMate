@@ -1,8 +1,8 @@
 <div class="container mt-5">
     <div class="item-list-hearder">
-        <h1 >Item List</h1>
+        <h1 >📋Item List</h1>
         <span>
-            <button class="btn btn-primary" routerLink="">Add</button>
+            <button class="btn btn-primary" routerLink="/item-form">Add</button>
         </span>
     </div>
     
@@ -11,9 +11,9 @@
         <li *ngFor="let item of itemService.items$ | async" class="list-group-item d-flex justify-content-between align-items-center">
             <span>{{ item.itemName }}</span>
             <div>
-                <button class="btn btn-success btn-sm me-2">Renter</button>
-                <button (click)="itemService.updateItem(item)" class="btn btn-warning btn-sm me-2">Edit</button>
-                <button (click)="itemService.deleteItem(item.itemId)" class="btn btn-danger btn-sm">Delete</button>
+                <button class="btn btn-outline-success btn-sm me-2" routerLink="">Renter</button>
+                <button (click)="itemService.updateItem(item)" class="btn btn-outline-warning btn-sm me-2">Edit</button>
+                <button (click)="itemService.deleteItem(item.itemId)" class="btn btn-outline-danger btn-sm me-2">Delete</button>
             </div>
         </li>
     </ul>

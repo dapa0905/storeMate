@@ -13,6 +13,8 @@ import { DashboardComponent } from './componet/dashboard/dashboard.component';
 import { NotificationsComponent } from './componet/notifications/notifications.component';
 import { ItemServiceService } from './service/itemService.service';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,11 +25,13 @@ import { ItemServiceService } from './service/itemService.service';
     ItemFormComponent,
     LoginComponent,
     DashboardComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [ItemServiceService],
   bootstrap: [AppComponent]
