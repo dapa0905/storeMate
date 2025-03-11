@@ -9,7 +9,8 @@
 
     <ul class="list-group">
         <li *ngFor="let item of itemService.items$ | async" class="list-group-item d-flex justify-content-between align-items-center">
-            <span>{{ item.itemName }}</span>
+            <!-- <span>{{ item.itemName }}</span> -->
+            <a [routerLink]="['/item-detail', item.itemId]" class="text-decoration-none">{{ item.itemName }}</a>
             <div>
                 <button class="btn btn-outline-success btn-sm me-2" routerLink="">Renter</button>
                 <button [routerLink]="['/item-form', item.itemId]" class="btn btn-outline-warning btn-sm me-2">Edit</button>
