@@ -14,6 +14,7 @@ import { NotificationsComponent } from './componet/notifications/notifications.c
 import { ItemServiceService } from './service/itemService.service';
 
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [ItemServiceService],
   bootstrap: [AppComponent]

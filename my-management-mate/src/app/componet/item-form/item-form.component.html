@@ -1,32 +1,38 @@
 <div class="container mt-5">
     <h2>📋Item Add</h2>
-    <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+        
+        <!-- Item Name -->
         <div class="mb-3">
             <label for="itemName" class="form-label">Item Name</label>
-            <input type="text" class="form-control" id="itemName" required name="itemName" ngModel>
+            <input type="text" class="form-control" id="itemName" required formControlName="itemName">
         </div>
 
+        <!-- Category -->
         <div class="mb-3">
             <label for="category" class="form-label">Category</label>
-            <select class="form-select" id="category" required name="category" ngModel>
+            <select class="form-select" id="category" required formControlName="category">
                 <option value="" disabled selected>Select a category</option>
                 <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
             </select>
         </div>
 
+        <!-- Quantity -->
         <div class="mb-3">
             <label for="quantity" class="form-label">Quantity</label>
-            <input type="number" class="form-control" id="quantity" required name="quantity" ngModel>
+            <input type="number" class="form-control" id="quantity" required formControlName="quantity">
         </div>
 
+        <!-- Price -->
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control" id="price" required name="price" ngModel>
+            <input type="number" class="form-control" id="price" required formControlName="price">
         </div>
 
+        <!-- Description -->
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" rows="3" name="description" ngModel></textarea>
+            <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Create Item</button>
