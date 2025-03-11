@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ITEMS } from '../mock/items';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable , of} from 'rxjs';
 import { Item } from '../model/item.model';
 
 @Injectable({
@@ -38,10 +38,11 @@ export class ItemServiceService {
   }
 
   // 물품 수정 
-  updateItem(updatedItem: Item):void {
+  updateItem(updatedItem: Item): Observable<void> {
     const updatedItems = this.itemsSubject.getValue().map((item) => 
       item.itemId === updatedItem.itemId ? updatedItem : item);
     this.itemsSubject.next(updatedItems);
+    return of(void 0);
   }
 
   // 물품 삭제

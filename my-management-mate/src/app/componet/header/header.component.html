@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <!-- Logo -->
-        <a class="navbar-brand" href="#">StoreMate</a>
+        <a class="navbar-brand" routerLink="/">StoreMate</a>
 
         <!-- Toggle button for mobile view -->
         <button
@@ -22,17 +22,17 @@
 
             <!-- 용품 목록 메뉴 -->
             <li class="nav-item">
-                <a class="nav-link" href="/item-list">Item list</a>
+                <a class="nav-link" routerLink="/item-list">Item list</a>
             </li>
 
             <!-- 로그인/로그아웃 메뉴 -->
             <!-- 로그인한 상태에 따라 메뉴가 달라짐 -->
             <li class="nav-item">
                 <!-- 로그인 후 -->
-                <a class="nav-link" href="/profile">Hello, UserName</a>
+                <a class="nav-link" routerLink="/profile">Hello, UserName</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/logout">LogOut</a>
+                <a class="nav-link" routerLink="/logout">LogOut</a>
             </li>
 
             <!-- 로그인 전 -->

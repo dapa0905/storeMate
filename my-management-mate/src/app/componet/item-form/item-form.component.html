@@ -1,5 +1,5 @@
 <div class="container mt-5">
-    <h2>📋Item Add</h2>
+    <h2>{{ isEditMode ? '📋Edit Item' : '📋Add Item' }}</h2>
     <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
         
         <!-- Item Name -->
@@ -35,6 +35,6 @@
             <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Create Item</button>
+        <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update Item' : 'Create Item' }}</button>
     </form>
 </div>

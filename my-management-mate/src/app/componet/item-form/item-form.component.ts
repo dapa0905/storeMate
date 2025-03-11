@@ -3,7 +3,7 @@ import { ItemServiceService } from '../../service/itemService.service';
 import { ItemCategory } from '../../enum/category.enum';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Item } from '../../model/item.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-item-form',
@@ -15,11 +15,14 @@ export class ItemFormComponent implements OnInit{
   
   checkoutForm!: FormGroup;
   categories = Object.values(ItemCategory);
+  isEditMode!: boolean;
+  itemId: number | null = null;
 
   constructor(
     private itemService: ItemServiceService,
     private formBuilder: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
   ){}
   
   ngOnInit(): void {
@@ -31,9 +34,46 @@ export class ItemFormComponent implements OnInit{
       price: [0, [Validators.required, Validators.min(1)]],
       description: ['']
     });
+
+    this.route.paramMap.subscribe(params => {
+      this.itemId = +params.get('id')!;
+      if(this.itemId) {
+        this.isEditMode = true;
+        this.loadItemData();
+      }
+    });
   }
+
+  loadItemData(): void {
+    this.itemService.getItemById(this.itemId!).subscribe(item => {
+      if (item) {
+        this.checkoutForm.patchValue({
+          itemName: item.itemName,
+          category: item.category,
+          quantity: item.quantity,
+          price: item.price,
+          description: item.description
+        });
+      }
+    });
+  }
+  
   onSubmit():void {
-    if(this.checkoutForm.valid){
+
+    if(this.checkoutForm.invalid){
+      return;
+    }
+    
+    const formValue = this.checkoutForm.value;
+
+    if(this.isEditMode && this.itemId) {
+      const updatedItem: Item = { ...formValue, itemId: this.itemId };
+      this.itemService.updateItem(updatedItem).subscribe(() => {
+        this.router.navigate(['/item-list']); 
+      });
+    }
+
+    else {
       const formValue = this.checkoutForm.value;
       const newItem: Item = {
         itemId: Date.now(),
@@ -46,13 +86,18 @@ export class ItemFormComponent implements OnInit{
         description: formValue.description,
       };
       this.itemService.addItem(newItem);
-      this.checkoutForm.reset();
       this.router.navigate(['/item-list']);
     }
-    else {
-      console.log('form is wrong');
-    }
-
   }
+
+  onEditMode(): void {
+    this.isEditMode = true;
+  }
+
+  onAddMode(): void {
+    this.isEditMode = false;
+    this.checkoutForm.reset();
+  }
+  
 
 }
