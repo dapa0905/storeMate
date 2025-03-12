@@ -1,9 +1,9 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <div class="card">
+            <div class="card" *ngIf="item">
                 <div class="card-header text-center">
-                    <h3>{{ item.itemName }}</h3>
+                    <h3>🧾{{ item.itemName }}</h3>
                     <p class="text-muted">{{ item.category }}</p>
                 </div>
 
@@ -34,7 +34,7 @@
                     </ul>
                 </div>
                     
-                <div class="mt-3 text-center">
+                <div class="mt-3 mb-3 text-center">
                     <a [routerLink]="['/item-form', item.itemId]" class="btn btn-warning btn-sm me-2">Edit Item</a>
                     <button class="btn btn-danger btn-sm">Delete Item</button>
                 </div>

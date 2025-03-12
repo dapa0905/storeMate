@@ -13,8 +13,14 @@ import { DashboardComponent } from './componet/dashboard/dashboard.component';
 import { NotificationsComponent } from './componet/notifications/notifications.component';
 import { ItemServiceService } from './service/itemService.service';
 
+// routing
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+
+// page
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
 
 @NgModule({
   declarations: [
@@ -34,6 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ],
   providers: [ItemServiceService],
   bootstrap: [AppComponent]

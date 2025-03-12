@@ -5,3 +5,9 @@
     align-items: center;
     margin: 5px;
 }
+
+.search-add{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}

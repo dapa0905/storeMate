@@ -1,15 +1,17 @@
 <div class="container mt-5">
     <div class="item-list-hearder">
         <h1 >📋Item List</h1>
-        <span>
+        <span class="search-add">
+            <input type="text" class="form-control" placeholder="🔍 Seach"
+                [(ngModel)] = "searchText" (input)="onSearchChange()"
+            >
             <button class="btn btn-primary" routerLink="/item-form">Add</button>
         </span>
     </div>
-    
 
-    <ul class="list-group">
-        <li *ngFor="let item of itemService.items$ | async" class="list-group-item d-flex justify-content-between align-items-center">
-            <!-- <span>{{ item.itemName }}</span> -->
+    <ul class="list-group" *ngIf="(searchText ? filteredItems.length > 0 : items.length > 0); else noResult">
+        <li *ngFor="let item of (searchText ? filteredItems : items) | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage}" 
+            class="list-group-item d-flex justify-content-between align-items-center">
             <a [routerLink]="['/item-detail', item.itemId]" class="text-decoration-none">{{ item.itemName }}</a>
             <div>
                 <button class="btn btn-outline-success btn-sm me-2" routerLink="">Renter</button>
@@ -18,4 +20,18 @@
             </div>
         </li>
     </ul>   
+
+    <ng-template #noResult>
+        <h5 class="text-center text-muted mt-5">❌No results found</h5>
+    </ng-template>
+
+    <pagination-controls 
+        class="pagination justify-content-center mt-5" 
+        (pageChange)="currentPage = $event"
+        previousLabel="Previous"
+        nextLabel="Next"
+        [maxSize]="5"
+        [directionLinks]="true"
+        [autoHide]="true">
+    </pagination-controls>
 </div>
