@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ITEMS } from '../mock/items';
 import { BehaviorSubject, Observable , of} from 'rxjs';
 import { Item } from '../model/item.model';
+import { NotificationServiceService } from './notification-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,11 @@ export class ItemServiceService {
 
   private itemsSubject = new BehaviorSubject<Item[]>(ITEMS);
   items$ = this.itemsSubject.asObservable();
+
+  constructor(
+    private notificationService: NotificationServiceService,
+
+  ){}
 
   // 물품 전체 가져오기기
   getItems(): Observable<Item[]> {
@@ -35,6 +41,7 @@ export class ItemServiceService {
   addItem(addItem: Item): void{
     const updatedItems = [...this.itemsSubject.getValue(), addItem];
     this.itemsSubject.next(updatedItems);
+    this.notificationService.addNotification(`${addItem.itemName} is upload!`, 'info');
   }
 
   // 물품 수정 

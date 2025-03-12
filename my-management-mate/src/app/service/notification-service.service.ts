@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 export interface Notification {
   message: string;
@@ -13,10 +13,10 @@ export interface Notification {
 
 export class NotificationServiceService {
 
-  private notification: Notification[] = [];
-  private notificationSubject = new Subject<Notification>();
+  private notifications: Notification[] = [];
+  private notificationSubject = new BehaviorSubject<Notification[]>([]);
 
-  public notification$ = this.notificationSubject.asObservable();
+  public notifications$ = this.notificationSubject.asObservable();
 
 
   // 알람 등록 메서드
@@ -24,14 +24,18 @@ export class NotificationServiceService {
     const notification: Notification = {
       message, type, timestamp: new Date(),
     };
-    this.notification.push(notification);
-    this.notificationSubject.next(notification);
-    this.notificationSubject.complete();
+
+    this.notifications.unshift(notification);
+    if(this.notifications.length > 5) {
+      this.notifications.pop();
+    };
+    // console.log('notification-service-ok!')
+    this.notificationSubject.next([...this.notifications])
   }
 
   // 알람 가져오는 메서드
   getNotifications(): Notification[] {
-    return this.notification;
+    return this.notifications;
   };
 
 }

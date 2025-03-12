@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NotificationServiceService, Notification } from '../../service/notification-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,6 +7,18 @@ import { Component } from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
+
+  recentUpdates: Notification[] = [];
+
+  constructor(
+    private notifications: NotificationServiceService,
+  ){}
+
+  ngOnInit(): void {
+    this.notifications.notifications$.subscribe((notifications: Notification[]) => {
+      this.recentUpdates = notifications;
+    });
+  };
 
 }

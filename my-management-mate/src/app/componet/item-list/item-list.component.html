@@ -21,9 +21,7 @@
         </li>
     </ul>   
 
-    <ng-template #noResult>
-        <h5 class="text-center text-muted mt-5">❌No results found</h5>
-    </ng-template>
+    
 
     <pagination-controls 
         class="pagination justify-content-center mt-5" 
@@ -32,6 +30,12 @@
         nextLabel="Next"
         [maxSize]="5"
         [directionLinks]="true"
-        [autoHide]="true">
+        [autoHide]="true"
+        *ngIf="filteredItems.length > 0"
+        >
     </pagination-controls>
+
+    <ng-template #noResult>
+        <h5 class="text-center text-muted mt-5">❌No results found</h5>
+    </ng-template>
 </div>
