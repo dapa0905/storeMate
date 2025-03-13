@@ -25,20 +25,21 @@
                 <a class="nav-link" routerLink="/item-list">Item list</a>
             </li>
 
-            <!-- 로그인/로그아웃 메뉴 -->
-            <!-- 로그인한 상태에 따라 메뉴가 달라짐 -->
-            <li class="nav-item">
-                <!-- 로그인 후 -->
-                <a class="nav-link" routerLink="/profile">Hello, UserName</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/logout">LogOut</a>
+            <!-- 로그인 전 -->
+            <li class="nav-item" *ngIf="!(isLoggedIn$ | async)">
+            <a class="nav-link" routerLink="/login">login</a>
             </li>
 
-            <!-- 로그인 전 -->
-            <!-- <li class="nav-item">
-            <a class="nav-link" href="/login">로그인</a>
-            </li> -->
+            <!-- 로그인/로그아웃 메뉴 -->
+            <!-- 로그인한 상태에 따라 메뉴가 달라짐 -->
+            <li class="nav-item" *ngIf="isLoggedIn$ | async">
+                <!-- 로그인 후 -->
+                <a class="nav-link" routerLink="/profile">Hello, {{ (currentUser$ | async)?.userName }}</a>
+            </li>
+            <li class="nav-item" *ngIf="isLoggedIn$ | async">
+                <a class="nav-link" (click)="logout()">Log Out</a>
+            </li>
+
             </ul>
         </div>
     </div>

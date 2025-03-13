@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // page
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SignupComponent } from './componet/signup/signup.component';
 
 
 
@@ -33,6 +34,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LoginComponent,
     DashboardComponent,
     NotificationsComponent,
+    SignupComponent,
     
   ],
   imports: [

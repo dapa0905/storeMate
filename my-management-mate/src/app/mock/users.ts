@@ -24,4 +24,15 @@ export const USERS: User[] = [
         createAt: new Date(),
         updateAt: new Date(),
     },
+
+    {
+        userId: 3,
+        userName: 'user',
+        email: '1111',
+        password: '1111', // 실제 해시된 비밀번호를 사용할 경우 해싱 처리 필요
+        role: Role.User,
+        isActive: true,
+        createAt: new Date(),
+        updateAt: new Date(),
+    },
 ];
