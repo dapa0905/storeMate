@@ -27,7 +27,7 @@ export const USERS: User[] = [
 
     {
         userId: 3,
-        userName: 'user',
+        userName: 'Hana',
         email: '1111',
         password: '1111', // 실제 해시된 비밀번호를 사용할 경우 해싱 처리 필요
         role: Role.User,

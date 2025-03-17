@@ -41,7 +41,7 @@ export class ItemServiceService {
   addItem(addItem: Item): void{
     const updatedItems = [...this.itemsSubject.getValue(), addItem];
     this.itemsSubject.next(updatedItems);
-    this.notificationService.addNotification(`${addItem.itemName} is upload!`, 'info');
+    this.notificationService.addNotification(`${addItem.itemName} is upload!`, 'info', addItem.itemId);
   }
 
   // 물품 수정 

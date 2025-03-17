@@ -23,7 +23,6 @@ export class AuthServiceService {
       return true;
     }
     else {
-      console.log(`${email} , ${password} is wrong`)
       return false;
     }
   }

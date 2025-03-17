@@ -5,6 +5,7 @@ export interface Notification {
   message: string;
   type: 'success' | 'error' | 'info';
   timestamp: Date;
+  itemId?: number;
 }
 
 @Injectable({
@@ -20,16 +21,15 @@ export class NotificationServiceService {
 
 
   // 알람 등록 메서드
-  addNotification(message: string, type: 'success' | 'error' | 'info'){
+  addNotification(message: string, type: 'success' | 'error' | 'info', itemId?: number){
     const notification: Notification = {
-      message, type, timestamp: new Date(),
+      message, type, timestamp: new Date(), itemId,
     };
 
     this.notifications.unshift(notification);
     if(this.notifications.length > 5) {
       this.notifications.pop();
     };
-    // console.log('notification-service-ok!')
     this.notificationSubject.next([...this.notifications])
   }
 

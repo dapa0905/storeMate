@@ -4,12 +4,32 @@
 
     <div class="row">
         <!-- 용품 상태 카드 -->
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <div class="card bg-light mb-3">
                 <div class="card-header text-dark">▪️Items status</div>
                 <div class="card-body">
-                <!-- <h5 class="card-title text-dark">총 용품 수: {{ totalItems }}</h5>
-                <p class="card-text text-dark">재고 부족: {{ lowStockCount }}</p> -->
+                    <h5 class="card-title text-dark"><strong>Total item count : </strong>{{ totalItems.length}} </h5>
+                </div>
+                <ul>
+                    <li *ngFor="let item of totalItems">{{item.itemName}} - {{ item.quantity }}</li>
+                </ul>
+            </div>
+        </div> -->
+        <div class="col-md-4">
+            <div class="card bg-light mb-3">
+                <div class="card-header text-dark">
+                    <span><i class="fas fa-box"></i>▪️Items status</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-dark mb-3">
+                        <strong>🛎️Total Items: </strong> <span>{{ totalItems.length }}</span>
+                    </h5>
+                    <ul class="list-group">
+                        <li *ngFor="let item of totalItems" class="list-group-item d-flex justify-content-between align-items-center">
+                            <a [routerLink]="['/item-detail', item.itemId]" class="text-decoration-none"><i class="fas fa-cube text-primary"></i> {{ item.itemName }}</a>
+                            <span class="badge bg-secondary">{{ item.quantity }}</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -20,7 +40,6 @@
                 <div class="card-header text-dark">▪️Out of Stock Notification</div>
                 <div class="card-body">
                     <h5 class="card-title text-dark">🛎️Notification</h5>
-                    <p class="card-text text-dark">hello</p>
                 </div>
             </div>
         </div>
@@ -33,7 +52,7 @@
                     <h5 class="card-title text-dark">🛎️item-list</h5>
                     <ul class="list-group">
                         <li class="list-group-item" *ngFor="let item of recentUpdates">
-                            <a class="text-decoration-none">{{ item.message }}</a> 
+                            <a class="text-decoration-none" [routerLink]="['/item-detail', item.itemId]">{{ item.message }}</a> 
                             <br><strong>UpdatedDate: </strong>{{ item.timestamp| date:'yyyy-MM-dd' }}
                         </li>
                     </ul>

@@ -17,7 +17,7 @@ export class ItemDetailComponent implements OnInit{
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private itemService: ItemServiceService
+    public itemService: ItemServiceService
   ){}
 
   ngOnInit(): void {
@@ -25,14 +25,11 @@ export class ItemDetailComponent implements OnInit{
     this.route.paramMap.subscribe(params => {
       this.itemId = +params.get('id')!;
       if(this.itemId) {
-        console.log(this.itemId);
         this.itemService.getItemById(this.itemId).subscribe({
           next: (selectedItem) => {
             this.item = selectedItem;
-            console.log('Fetch Item', this.item);
           },
           error: (err) => {
-            console.log('Error fetching item', err);
           }
         })
       }
