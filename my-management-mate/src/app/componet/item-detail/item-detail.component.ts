@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ItemServiceService } from '../../service/itemService.service';
 import { Item } from '../../model/item.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-item-detail',
@@ -15,9 +16,9 @@ export class ItemDetailComponent implements OnInit{
   item: Item | undefined = undefined;
 
   constructor(
-    private router: Router,
     private route: ActivatedRoute,
-    public itemService: ItemServiceService
+    public itemService: ItemServiceService,
+    private location: Location,
   ){}
 
   ngOnInit(): void {
@@ -30,11 +31,20 @@ export class ItemDetailComponent implements OnInit{
             this.item = selectedItem;
           },
           error: (err) => {
+            console.log(err);
           }
         })
       }
     })
+  }
 
+  deleteItem():void {
+    if(!this.itemId) {
+      return;
+    }
+
+    this.itemService.deleteItem(this.itemId);
+    this.location.back();
   }
   
 

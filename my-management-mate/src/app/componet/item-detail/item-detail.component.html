@@ -37,7 +37,7 @@
                 <div class="mt-3 mb-3 text-center">
                     <button class="btn btn-success btn-sm me-2">Render Item</button>
                     <a [routerLink]="['/item-form', item.itemId]" class="btn btn-warning btn-sm me-2">Edit Item</a>
-                    <button class="btn btn-danger btn-sm" (click)="itemService.deleteItem(item.itemId)">Delete Item</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteItem()">Delete Item</button>
                 </div>
 
             </div>

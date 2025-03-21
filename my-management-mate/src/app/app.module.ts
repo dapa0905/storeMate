@@ -20,6 +20,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 // page
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SignupComponent } from './componet/signup/signup.component';
+import { ItemRenderComponent } from './componet/item-render/item-render.component';
+
+// MatDialog
+import { MatFormFieldModule } from '@angular/material/form-field';  
+import { MatSelectModule } from '@angular/material/select';  
+import { MatButtonModule } from '@angular/material/button';  
+import { MatDialogModule } from '@angular/material/dialog';  
 
 
 
@@ -35,6 +42,7 @@ import { SignupComponent } from './componet/signup/signup.component';
     DashboardComponent,
     NotificationsComponent,
     SignupComponent,
+    ItemRenderComponent,
     
   ],
   imports: [
@@ -43,6 +51,10 @@ import { SignupComponent } from './componet/signup/signup.component';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButtonModule,
   ],
   providers: [ItemServiceService],
   bootstrap: [AppComponent]

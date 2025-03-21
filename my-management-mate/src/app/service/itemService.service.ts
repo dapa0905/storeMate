@@ -3,6 +3,8 @@ import { ITEMS } from '../mock/items';
 import { BehaviorSubject, Observable , of} from 'rxjs';
 import { Item } from '../model/item.model';
 import { NotificationServiceService } from './notification-service.service';
+import { AuthServiceService } from './authService.service';
+import { User } from '../model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,7 @@ export class ItemServiceService {
 
   constructor(
     private notificationService: NotificationServiceService,
+    private authService: AuthServiceService,
 
   ){}
 
@@ -57,5 +60,12 @@ export class ItemServiceService {
     const updatedItems = this.itemsSubject.getValue().filter((item) => item.itemId !== itemId);
     this.itemsSubject.next(updatedItems);
   }
+
+  // 물품 구독
+  renterItem(item: Item, user: User): Observable<void>{
+    console.log('renterItem is success')
+    return of (void 0);
+  }
+
 
 }

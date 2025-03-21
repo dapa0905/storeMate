@@ -12,11 +12,11 @@
     <ul class="list-group" *ngIf="(searchText ? filteredItems.length > 0 : items.length > 0); else noResult">
         <li *ngFor="let item of (searchText ? filteredItems : items) | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage}" 
             class="list-group-item d-flex justify-content-between align-items-center">
-            <a [routerLink]="['/item-detail', item.itemId]" class="text-decoration-none">{{ item.itemName }}</a>
+            <a class="text-decoration-none" [routerLink]="['/item-detail', item.itemId]">{{ item.itemName }}</a>
             <div>
-                <button class="btn btn-outline-success btn-sm me-2" routerLink="">Renter</button>
-                <button [routerLink]="['/item-form', item.itemId]" class="btn btn-outline-warning btn-sm me-2">Edit</button>
-                <button (click)="itemService.deleteItem(item.itemId)" class="btn btn-outline-danger btn-sm me-2">Delete</button>
+                <button class="btn btn-outline-success btn-sm me-2" (click)="onRenterItem(item.itemId)">Renter</button>
+                <button class="btn btn-outline-warning btn-sm me-2" [routerLink]="['/item-form', item.itemId]">Edit</button>
+                <button class="btn btn-outline-danger btn-sm me-2" (click)="itemService.deleteItem(item.itemId)">Delete</button>
             </div>
         </li>
     </ul>   

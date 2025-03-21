@@ -1,0 +1,41 @@
+<h2 mat-dialog-title class="modal-title">제품 렌탈</h2>
+
+<mat-dialog-content class="modal-content">
+  <div class="product-details">
+    <div class="product-info">
+      <h3 class="product-name">{{ item.itemName }}</h3>
+      <p class="product-description">{{ item.description }}</p>
+      
+      <mat-form-field class="rent-duration-field">
+        <mat-label>렌탈 기간</mat-label>
+        <mat-select>
+          <mat-option value="1">1일</mat-option>
+          <mat-option value="7">1주일</mat-option>
+          <mat-option value="30">1개월</mat-option>
+        </mat-select> 
+      </mat-form-field>
+
+      <mat-form-field class="rent-duration-field">
+        <mat-label>수량 기간</mat-label>
+        <mat-select>
+          <mat-option value="1">1일</mat-option>
+          <mat-option value="7">1주일</mat-option>
+          <mat-option value="30">1개월</mat-option>
+        </mat-select> 
+      </mat-form-field>
+
+      <mat-form-field class="rent-duration-field">
+        <mat-label>Reason for rental</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="modal-actions">
+  <button mat-button color="primary" [mat-dialog-close]>
+    렌탈하기
+  </button>
+  <button mat-button [mat-dialog-close]>닫기</button>
+</mat-dialog-actions>
